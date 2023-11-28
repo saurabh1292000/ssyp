@@ -1,9 +1,10 @@
+# corrected
 import boto3
 from vaultUtil import VaultClient
 
 VAULT_URL = "http://127.0.0.1:8200"
-ROLE_ID = "40eab551-1752-d210-876c-200497d3abbb"
-SECRET_ID = "d5d175e6-d60b-a887-3cc1-f13358deb2de"
+ROLE_ID = "53d6fffc-4283-e33b-460d-a5b797e7955e"
+SECRET_ID = "63317ab0-2916-8885-6acb-a4790d9ca1a3"
 SECRET_PATH = "secret/data/aws"
 
 vault_client = VaultClient(VAULT_URL, ROLE_ID, SECRET_ID, SECRET_PATH)
@@ -52,14 +53,14 @@ class AWSConnector:
         return aws_client_conn
 
 # Create an instance of the AWSConnector class
-# client='s3'
-# aws_connector = AWSConnector(aws_access_key, aws_secret_key, client, region)
+client='s3'
+aws_connector = AWSConnector(aws_access_key, aws_secret_key, client, region)
 
-# # Access the S3 client through the instance
-# s3_client = aws_connector.aws_client_conn
+# Access the S3 client through the instance
+s3_client = aws_connector.aws_client_conn
 
-# # Now you can use s3_client to perform S3 operations
-# response = s3_client.list_buckets()
-# print("S3 Buckets:")
-# for bucket in response['Buckets']:
-#     print(f"  {bucket['Name']}")
+# Now you can use s3_client to perform S3 operations
+response = s3_client.list_buckets()
+print("S3 Buckets:")
+for bucket in response['Buckets']:
+    print(f"  {bucket['Name']}")
